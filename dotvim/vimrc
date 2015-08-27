@@ -1,0 +1,177 @@
+" File encoding
+" -------------
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,cp936,gb10830,big5,euc-jp,euc-kr,laian1
+set helplang=cn
+set imcmdline
+set langmenu=zh_CN.utf-8
+language messages zh_CN.utf-8
+
+
+" Editor Settings
+" ---------------
+syntax enable
+syntax on
+
+
+set number
+set nocompatible
+set autoindent
+set autoread
+set mouse=a
+set hidden
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set smarttab
+set backspace=indent,eol,start
+set ruler
+set dictionary+=/usr/share/dict/words
+set isk+=-
+
+
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+set t_Co=256
+"set guifont=Monaco:h20
+hi Normal  ctermfg=252 ctermbg=none
+
+
+" Fold
+" ----
+set foldenable
+set foldmethod=indent
+" 折叠方法
+" manual    手工折叠
+" indent    使用缩进表示折叠
+" expr      使用表达式定义折叠
+" syntax    使用语法定义折叠
+" diff      对没有更改的文本进行折叠
+" marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
+set foldlevel=99
+
+
+" Search
+" ------
+set hlsearch
+"set ignorecase
+set incsearch
+set smartcase
+
+
+" Status Line
+" -----
+set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+set laststatus=2
+set showcmd
+set showmode
+set cmdheight=1
+
+
+filetype indent on
+autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType html,htmldjango,xhtml,haml,jsp setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
+autocmd FileType java setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
+autocmd FileType python setlocal expandtab smarttab shiftwidth=4 tabstop=4 softtabstop=4 textwidth=120
+autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+
+
+" Hot Key
+" -------
+let mapleader = ','
+let g:mapleader = ','
+
+" Shortcut to rapidly toggle `set list`
+set listchars=tab:▸\ ,trail:-,eol:¬,extends:>,precedes:<
+nmap <leader>l :set list!<CR>
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+map <leader>tb :new tab<CR>
+map <leader>tc :tab close<CR>
+map <leader>to :tab only<CR>
+map <leader>tm :tab move<CR>
+map <leader>te :new tab edit<CR>
+
+autocmd BufWritePost .vimrc so ~/.vimrc
+autocmd BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
+map <leader>fj <Esc>:%!python -m json.tool<CR>
+
+
+" Plugins Vundle
+" --------------
+
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+
+"	solarized
+
+Bundle 'altercation/vim-colors-solarized'
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+colorscheme solarized
+
+
+"	YouCompleteMe
+
+"Bundle 'Valloric/YouCompleteMe'
+"let g:ycm_confirm_extra_conf = 0
+"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+"let g:ycm_path_to_python_interpreter = '~/.youcompleteme.py'
+"nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+
+"	ctrlp
+
+Bundle 'kien/ctrlp.vim'
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+map <leader>f :CtrlPMRU<CR>
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
+
+
+"	nerdtred
+
+Bundle "scrooloose/nerdtree"
+map <leader>n :NERDTreeToggle<CR>
+let NERDTreeHighlightCursorline=1
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+
+filetype plugin indent on
+
