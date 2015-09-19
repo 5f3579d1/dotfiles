@@ -1,6 +1,6 @@
 [user]
 	name = Ke Cheung
-	email = 5F3579D1@gmail.com
+	email = 5f3579d1@gmail.com
 [alias]
 	ci = commit
 	co = checkout
@@ -21,3 +21,5 @@
 [mergetool "sourcetree"]
 	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.5.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[push]
+	default = simple

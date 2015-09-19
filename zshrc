@@ -100,6 +100,7 @@ alias gohz1='ssh root@hz1.whiletime.com'
 alias gohz2='ssh root@hz2.whiletime.com'
 alias gohz3='ssh root@hz3.whiletime.com'
 alias gomq='ssh root@mq.whiletime.com'
+alias goci='ssh root@ci.whiletime.com'
 alias deploy='scp target/wetime.war root@hz1.whiletime.com:/root'
 
 export PATH="$HOME/.rbenv/bin:$PATH"
