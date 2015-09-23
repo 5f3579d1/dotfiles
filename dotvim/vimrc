@@ -122,7 +122,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 
-"	solarized
+"   solarized
 
 Bundle 'altercation/vim-colors-solarized'
 let g:solarized_termcolors=256
@@ -132,7 +132,7 @@ let g:solarized_visibility="normal"
 colorscheme solarized
 
 
-"	YouCompleteMe
+"   YouCompleteMe
 
 "Bundle 'Valloric/YouCompleteMe'
 "let g:ycm_confirm_extra_conf = 0
@@ -141,7 +141,7 @@ colorscheme solarized
 "nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
-"	ctrlp
+"   ctrlp
 
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map = '<leader>p'
@@ -164,13 +164,17 @@ let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 
 
-"	nerdtred
+"   nerdtred
 
 Bundle "scrooloose/nerdtree"
 map <leader>n :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+
+"   vim-better-whitespace
+Bundle "ntpeters/vim-better-whitespace"
 
 
 filetype plugin indent on
