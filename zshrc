@@ -49,7 +49,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew brew-cask npm mvn docker)
+plugins=(git brew brew-cask npm mvn gradle docker fasd)
 
 # User configuration
 
@@ -106,6 +106,5 @@ alias deploy='scp target/wetime.war root@hz1.whiletime.com:/root'
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-export HADOOP_PREFIX=/usr/local/Cellar/hadoop/2.7.0/libexec
-export HADOOP_OPTS="$HADOOP_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
