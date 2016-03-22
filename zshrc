@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -15,7 +15,7 @@ ZSH_THEME="robbyrussell"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -90,17 +90,8 @@ export PATH="/usr/local/sbin:$PATH"
 alias e="/usr/local/bin/vim"
 alias 'ps?'='ps aux | grep -v grep | grep '
 alias goagent='python ~/Applications/goagent/local/proxy.py &> /dev/null'
+alias ss='ss-local -c /usr/local/etc/shadowsocks-libev.json'
 
-alias godo='ssh core@jiangting.club'
-alias gock='ssh root@zhangke.pub'
-alias govagrant='ssh vagrant@localhost -p 2222'
-
-
-alias gohz1='ssh root@hz1.whiletime.com'
-alias gohz2='ssh root@hz2.whiletime.com'
-alias gohz3='ssh root@hz3.whiletime.com'
-alias gomq='ssh root@mq.whiletime.com'
-alias goci='ssh root@ci.whiletime.com'
 alias deploy='scp target/wetime.war root@hz1.whiletime.com:/root'
 
 export PATH="$HOME/.rbenv/bin:$PATH"
