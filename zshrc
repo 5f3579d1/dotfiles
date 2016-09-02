@@ -49,11 +49,10 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew brew-cask npm mvn gradle docker fasd)
+plugins=(git fasd)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -83,19 +82,32 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export PATH="/usr/local/sbin:$PATH"
 
-alias e="/usr/local/bin/vim"
-alias 'ps?'='ps aux | grep -v grep | grep '
-alias goagent='python ~/Applications/goagent/local/proxy.py &> /dev/null'
-alias ss='ss-local -c /usr/local/etc/shadowsocks-libev.json'
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
-alias deploy='scp target/wetime.war root@hz1.whiletime.com:/root'
+export HOMEBREW_GITHUB_API_TOKEN="d51daf9ed7fe1d960cf347d77eed8d5bee079fad"
 
-export PATH="$HOME/.rbenv/bin:$PATH"
+export ANDROID_HOME=/usr/local/opt/android-sdk
+
+export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"
 
+export PYENV_ROOT=/usr/local/var/pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+#if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+#export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
+
+alias 'ps?'='ps aux | grep -v grep | grep '
+alias goagent='python ~/Applications/goagent/local/proxy.py &> /dev/null'
+alias ss='ss-local -c /usr/local/etc/shadowsocks-libev.json &> /dev/null &'
+alias kcptun='~/Applications/client_darwin_amd64 -r "192.241.229.96:12580" -l ":12580" -key wahaha -mtu 1400 -sndwnd 1024 -rcvwnd 2048 -mode fast2 &> /dev/null &'
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+  --cache=$HOME/.npm/.cache/cnpm \
+  --disturl=https://npm.taobao.org/dist \
+  --userconfig=$HOME/.cnpmrc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
